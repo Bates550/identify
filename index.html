@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Identify</title>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
+    <script type="text/javascript" src="js/phaser-plugin-isometric.min.js"></script>
+    <script type="text/javascript" src="js/Boot.js"></script>
+    <!--<script type="text/javascript" src="js/Preloader.js"></script>-->
+    <!--<script type="text/javascript" src="js/MainMenu.js"></script>-->
+    <!--<script type="text/javascript" src="js/Game.js"></script>-->
+
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+
+        #gamebox {
+            margin: 0 auto;
+            width:500px;
+        }
+        #rules p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div id="gamebox">
+</div>
+<script type="text/javascript">
+(function () {
+
+    var game = new Phaser.Game(500, 500 , Phaser.AUTO, 'gamebox', true, false);
+
+    game.state.add('Boot', Identify.Boot);
+    //game.state.add('Preloader', Identify.Preloader);
+    //game.state.add('MainMenu', Identify.MainMenu);
+    //game.state.add('Game', Identify.Game);
+
+    game.state.start('Boot');
+
+})();
+</script>
+</body>
+</html>
