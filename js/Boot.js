@@ -49,6 +49,64 @@ Identify.Boot.prototype = {
 				this.sprite.animations.add('right', [7, 6, 8, 6], this.fps, false)
 				this.sprite.animations.add('down', [4, 3, 5, 3], this.fps, false)
 				this.sprite.animations.add('left', [16, 15, 17, 15], this.fps, false)
+			},
+			update: function(game) {
+				var speed = 2; // 2 is a magic number
+				// If the player is not in already in the process of moving
+				if (!this.moving.value) {
+					if (game.cursors.up.isDown) {
+						this.move('up');
+					}
+					else if (game.cursors.right.isDown) {
+						this.move('right');
+					}
+					else if (game.cursors.down.isDown) {
+						this.move('down');
+					}
+					else if (game.cursors.left.isDown) {
+						this.move('left');
+					}
+				}
+				// Else the player is in the process of moving
+				else {
+					// If they're done moving
+					if (--this.moving.timer <= 0) {
+						//this.player.doMove()
+						switch(this.moving.dir) {
+							case 'up':
+								this.pos = { x: this.pos.x, y: this.pos.y-1 };
+								break;
+							case 'right':
+								this.pos = { x: this.pos.x+1, y: this.pos.y };
+								break;
+							case 'down':
+								this.pos = { x: this.pos.x, y: this.pos.y+1 };
+								break;
+							case 'left':
+								this.pos = { x: this.pos.x-1, y: this.pos.y };
+								break;
+						}
+						this.moving.value = false;
+					}
+					// Else they're not done moving
+					else {
+						//console.log('hi');
+						switch(this.moving.dir) {
+							case 'up':
+								this.sprite.isoY -= speed;
+								break;
+							case 'right':
+								this.sprite.isoX += speed;
+								break;
+							case 'down':
+								this.sprite.isoY += speed;
+								break;
+							case 'left':
+								this.sprite.isoX -= speed;
+								break;
+						}
+					}
+				}
 			}
 		};
 		this.player.addSprite(this.game);
@@ -76,10 +134,10 @@ Identify.Boot.prototype = {
 	},
 
 	update: function() {
-		var speed = 2; // 2 is a magic number
-		//this.player.update();
+		//var speed = 2; // 2 is a magic number
+		this.player.update(this.game);
 		// If the player is not in already in the process of moving
-		if (!this.player.moving.value) {
+		/*if (!this.player.moving.value) {
 			if (this.game.cursors.up.isDown) {
 				this.player.move('up');
 			}
@@ -134,6 +192,7 @@ Identify.Boot.prototype = {
 			}
 		}
 		//console.log(this.player.sprite.isoX, this.player.sprite.isoY);
+		*/
 	},
 
 	gameResized: function (width, height) {
