@@ -11,7 +11,7 @@ Identify = {
 
 	isoGroup: undefined,
 
-	player: undefined,
+	player: undefined
 };
 
 Identify.Boot = function (game) {
@@ -51,6 +51,71 @@ Identify.Boot.prototype = {
 			},
 			blur: 'blurriest',
 			move: function(dir) {
+				if (this.pos.x === -1) { // Player must be in (-1,0) since (-1,-1) and (-1,1) are inaccessible
+					if (dir === 'up') {
+						// Destroy thing in (-1,-1)
+					}
+					else if (dir === 'right') {
+						this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
+						this.sprite.animations.play(this.moving.dir);
+					}
+					else if (dir === 'down') {
+						// Destroy thing in (-1,1)
+					}
+					else if (dir === 'left') {
+						// Go to new room
+					}
+				}
+				else if (this.pos.x === 1) { // Player must be in (1,0) since (1,-1) and (1,1) are inaccessible
+					if (dir === 'up') {
+						// Destroy thing in (1,-1)
+					}
+					else if (dir === 'right') {
+						// Go to new room
+					}
+					else if (dir === 'down') {
+						// Destroy thing in (1,1)
+					}
+					else if (dir === 'left') {
+						this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
+						this.sprite.animations.play(this.moving.dir);
+					}
+				}
+				else if (this.pos.y === -1) { // Player must be in (0,-1) since (-1,-1) and (1,-1) are inaccessible
+					if (dir === 'up') {
+						// Go to new room
+					}
+					else if (dir === 'right') {
+						// Destroy thing in (1,-1)
+					}
+					else if (dir === 'down') {
+						this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
+						this.sprite.animations.play(this.moving.dir);
+					}
+					else if (dir === 'left') {
+						// Destroy thing in (-1,-1)
+					}
+				}
+				else if (this.pos.y === 1) { // Player must be in (0,1) since (-1,1) and (1,1) are inaccessible
+					if (dir === 'up') {
+						this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
+						this.sprite.animations.play(this.moving.dir);
+					}
+					else if (dir === 'right') {
+						// Destroy thing in (1,1)
+					}
+					else if (dir === 'down') {
+						// Go to new room
+					}
+					else if (dir === 'left') {
+						// Destroy thing in (-1,1)
+					}
+				}
+				else { // In (0,0)
+					this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
+					this.sprite.animations.play(this.moving.dir);
+				}
+				/*
 				if (
 					dir === 'up' && this.pos.y !== -1 ||
 					dir === 'right' && this.pos.x !== 1 ||
@@ -59,6 +124,7 @@ Identify.Boot.prototype = {
 					this.moving = { value: true, timer: 35, dir: dir}; // 35 is a magic number
 					this.sprite.animations.play(this.moving.dir);
 				}
+				*/
 			},
 			fps: 6,
 			direction: 'down',
