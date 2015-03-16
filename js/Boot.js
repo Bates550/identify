@@ -21,6 +21,12 @@ Identify.Boot.prototype = {
 
 	preload: function () {
 		this.game.load.image('tile', 'images/tile.png');
+		this.game.load.image('edge_right', 'images/edge_right.png');
+		this.game.load.image('edge_down', 'images/edge_down.png');
+		this.game.load.image('arrow_up', 'images/arrow_up.png');
+		this.game.load.image('arrow_right', 'images/arrow_right.png');
+		this.game.load.image('arrow_down', 'images/arrow_down.png');
+		this.game.load.image('arrow_left', 'images/arrow_left.png');
 		this.game.load.spritesheet('player', 'images/lucas_walk.png', 72, 112);
 		this.game.load.spritesheet('player_blurry', 'images/lucas_walk_blurry.png', 36, 56);
 		this.game.load.spritesheet('player_blurriest', 'images/lucas_walk_blurriest.png', 18, 28);
@@ -165,6 +171,14 @@ Identify.Boot.prototype = {
 				tile.scale.set(1.6);
 			}
 		}
+
+		var edge;
+		edge = this.game.add.isoSprite(192, 64, 0, 'edge_right', 0, this.isoGroup);
+		edge.anchor.set(0.5);
+		edge.scale.set(1.6);
+		edge = this.game.add.isoSprite(64, 192, 0, 'edge_down', 0, this.isoGroup);
+		edge.anchor.set(0.5);
+		edge.scale.set(1.6);
 
 		this.game.iso.simpleSort(this.isoGroup);
 
