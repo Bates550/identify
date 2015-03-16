@@ -31,9 +31,9 @@ Identify.Boot.prototype = {
 		this.game.load.image('arrow_right', 'images/arrow_right.png');
 		this.game.load.image('arrow_down', 'images/arrow_down.png');
 		this.game.load.image('arrow_left', 'images/arrow_left.png');
-		this.game.load.spritesheet('player', 'images/lucas_walk.png', 72, 112);
-		this.game.load.spritesheet('player_blurry', 'images/lucas_walk_blurry.png', 36, 56);
-		this.game.load.spritesheet('player_blurriest', 'images/lucas_walk_blurriest.png', 18, 28);
+		this.game.load.spritesheet('player', 'images/tran_walk.png', 72, 112);
+		this.game.load.spritesheet('player_blurry', 'images/tran_walk_blurry.png', 36, 56);
+		this.game.load.spritesheet('player_blurriest', 'images/tran_walk_blurriest.png', 18, 28);
 		this.game.plugins.add(new Phaser.Plugin.Isometric(this.game));
 		this.game.iso.anchor.setTo(0.5, 0.5);
 		this.game.stage.backgroundColor = '#8595a1';
