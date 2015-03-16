@@ -21,8 +21,12 @@ Identify.Boot.prototype = {
 
 	preload: function () {
 		this.game.load.image('tile', 'images/tile.png');
+		this.game.load.image('edge_up', 'images/edge_up.png');
 		this.game.load.image('edge_right', 'images/edge_right.png');
 		this.game.load.image('edge_down', 'images/edge_down.png');
+		this.game.load.image('edge_left', 'images/edge_left.png');
+		this.game.load.image('wall_up', 'images/wall_up.png');
+		this.game.load.image('wall_left', 'images/wall_left.png');
 		this.game.load.image('arrow_up', 'images/arrow_up.png');
 		this.game.load.image('arrow_right', 'images/arrow_right.png');
 		this.game.load.image('arrow_down', 'images/arrow_down.png');
@@ -32,6 +36,7 @@ Identify.Boot.prototype = {
 		this.game.load.spritesheet('player_blurriest', 'images/lucas_walk_blurriest.png', 18, 28);
 		this.game.plugins.add(new Phaser.Plugin.Isometric(this.game));
 		this.game.iso.anchor.setTo(0.5, 0.5);
+		this.game.stage.backgroundColor = '#8595a1';
 	},
 
 	create: function () {
@@ -173,12 +178,32 @@ Identify.Boot.prototype = {
 		}
 
 		var edge;
+		edge = this.game.add.isoSprite(60, -60, 0, 'edge_up', 0, this.isoGroup);
+		edge.anchor.set(0.5);
+		edge.scale.set(1.6);
 		edge = this.game.add.isoSprite(192, 64, 0, 'edge_right', 0, this.isoGroup);
 		edge.anchor.set(0.5);
 		edge.scale.set(1.6);
 		edge = this.game.add.isoSprite(64, 192, 0, 'edge_down', 0, this.isoGroup);
 		edge.anchor.set(0.5);
 		edge.scale.set(1.6);
+		edge = this.game.add.isoSprite(-60, 60, 0, 'edge_left', 0, this.isoGroup);
+		edge.anchor.set(0.5);
+		edge.scale.set(1.6);
+
+		var wall;
+		wall = this.game.add.isoSprite(0, -37, 59, 'wall_up', 0, this.isoGroup);
+		wall.anchor.set(0.5);
+		wall.scale.set(1.6);
+		wall = this.game.add.isoSprite(128, -37, 59, 'wall_up', 0, this.isoGroup);
+		wall.anchor.set(0.5);
+		wall.scale.set(1.6);
+		wall = this.game.add.isoSprite(-37, 0, 59, 'wall_left', 0, this.isoGroup);
+		wall.anchor.set(0.5);
+		wall.scale.set(1.6);
+		wall = this.game.add.isoSprite(-37, 128, 59, 'wall_left', 0, this.isoGroup);
+		wall.anchor.set(0.5);
+		wall.scale.set(1.6);
 
 		this.game.iso.simpleSort(this.isoGroup);
 
