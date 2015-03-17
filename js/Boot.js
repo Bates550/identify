@@ -119,7 +119,7 @@ Identify.Boot.prototype = {
 					if (this.value === 8 || this.value === 16) {
 						player.toggleBlur(game);
 					}
-					else if (this.value === 24) {
+					else if (this.value === 22) {
 						// Goal state
 						player.fly(game);
 					}
