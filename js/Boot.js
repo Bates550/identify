@@ -116,10 +116,10 @@ Identify.Boot.prototype = {
 				obj: undefined,
 				increment: function(game, player) {
 					++this.value;
-					if (this.value === 8 || this.value === 16) {
+					if (this.value === 13 || this.value === 18) {
 						player.toggleBlur(game);
 					}
-					else if (this.value === 22) {
+					else if (this.value === 21) {
 						// Goal state
 						player.fly(game);
 					}
